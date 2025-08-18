@@ -15,5 +15,12 @@ class Categorias
     );
     return $result->rowCount();
   }
+  public static function listarTudo()
+  {
+      $conn = new Database();
+      $result = $conn->executeQuery('
+      SELECT * FROM tb_categorias');
+      return $result->fetchAll(PDO::FETCH_ASSOC);
+  }
 
 }

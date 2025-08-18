@@ -4,7 +4,7 @@
             <h4 class="mb-0">Cadastro de Categoria</h4>
         </div>
         <div class="card-body">
-            <form action="categoria/salvar" method="POST">
+            <form action="/categoria/salvar" method="POST">
                 
                 <!-- Nome da Categoria -->
                 <div class="mb-3">

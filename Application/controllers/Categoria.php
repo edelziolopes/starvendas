@@ -6,7 +6,9 @@ class Categoria extends Controller
 {
   public function index()
   {
-    $this->view('categoria/index');
+    $Categorias = $this->model('Categorias');
+    $data = $Categorias::listarTudo();
+    $this->view('categoria/index', ['categorias' => $data]);
   }
   public function salvar()
   {
