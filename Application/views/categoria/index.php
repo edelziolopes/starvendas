@@ -20,5 +20,13 @@
                 
             </form>
         </div>
+
+
+        <h4>Listar Categorias</h4>
+        <?php foreach ($data['categorias'] as $categoria): ?>
+            <p>ID: <?=$categoria['id']?></p>
+            <p>Nome: <?=$categoria['nome']?></p>
+        <?php endforeach; ?>
+
     </div>
 </div>
