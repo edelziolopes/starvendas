@@ -22,11 +22,27 @@
         </div>
 
 
-        <h4>Listar Categorias</h4>
-        <?php foreach ($data['categorias'] as $categoria): ?>
-            <p>ID: <?=$categoria['id']?></p>
-            <p>Nome: <?=$categoria['nome']?></p>
-        <?php endforeach; ?>
+        <h4 class="mt-4">Listar Categorias</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped mt-2">
+            <thead class="table-primary">
+                <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($data['categorias'] as $categoria): ?>
+                <tr>
+                    <td><?= htmlspecialchars($categoria['id']) ?></td>
+                    <td><?= htmlspecialchars($categoria['nome']) ?></td>
+                    <td><a href="/categoria/excluir/<?=$categoria['id']?>" class="btn btn-danger">Excluir</a></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+            </table>
+        </div>
 
     </div>
 </div>

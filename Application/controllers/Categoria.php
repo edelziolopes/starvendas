@@ -17,6 +17,12 @@ class Categoria extends Controller
     $Categorias::salvar($nome);
     $this->redirect('categoria/index');
   }
+  public function excluir($id)
+  {
+    $Categorias = $this->model('Categorias');
+    $Categorias::excluir($id);
+    $this->redirect('categoria/index');
+  }
 
 
 }
