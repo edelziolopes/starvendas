@@ -36,7 +36,7 @@ class Produtos
   {
       $conn = new Database();
       $result = $conn->executeQuery('
-      SELECT * FROM tb_categorias');
+      SELECT * FROM tb_produtos');
       return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 

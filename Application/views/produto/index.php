@@ -27,7 +27,7 @@
                 <!-- Preço -->
                 <div class="mb-3">
                     <label for="preco" class="form-label">Preço (R$)</label>
-                    <input type="number" step="0.01" class="form-control" id="txt_preco" name="preco" placeholder="0.00" required>
+                    <input type="number" step="0.01" class="form-control" id="preco" name="txt_preco" placeholder="0.00" required>
                 </div>
 
                 <!-- Imagem -->
@@ -50,5 +50,36 @@
                 
             </form>
         </div>
+
+        <h4 class="mt-4">Listar Produtos</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped mt-2">
+            <thead class="table-primary">
+                <tr>
+                <th>ID</th>
+                <th>Categoria</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Imagem</th>
+                <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($data['produtos'] as $data): ?>
+                <tr>
+                    <td><?= htmlspecialchars($data['id']) ?></td>
+                    <td><?= htmlspecialchars($data['id_categoria']) ?></td>
+                    <td><?= htmlspecialchars($data['nome']) ?></td>
+                    <td><?= htmlspecialchars($data['preco']) ?></td>
+                    <td><?= htmlspecialchars($data['imagem']) ?></td>
+                    <td><a href="/produto/excluir/<?=$data['id']?>" class="btn btn-danger">Excluir</a></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+            </table>
+        </div>
+
+
+
     </div>
 </div>

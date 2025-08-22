@@ -7,8 +7,17 @@ class Produto extends Controller
   public function index()
   {
     $Categorias = $this->model('Categorias');
-    $data = $Categorias::listarTudo();
-    $this->view('produto/index', ['categorias' => $data]);
+    $listarCat = $Categorias::listarTudo();
+
+    $Produtos = $this->model('Produtos');
+    $listarProd = $Produtos::listarTudo();
+
+
+    $this->view('produto/index', [
+      'categorias' => $listarCat,
+      'produtos' => $listarProd,
+
+    ]);
   }
   public function salvar()
   {
@@ -17,6 +26,8 @@ class Produto extends Controller
     $preco = $_POST['txt_preco'];
     $imagem = $_POST['txt_imagem'];
     $quantidade = $_POST['txt_quantidade'];
+
+    
 
     $Produtos = $this->model('Produtos');
     $Produtos::salvar($categoria, $nome, $preco, $imagem, $quantidade);
