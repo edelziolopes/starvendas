@@ -4,41 +4,42 @@
             <h4 class="mb-0">Cadastro de Produto</h4>
         </div>
         <div class="card-body">
-            <form action="salvar_produto.php" method="POST" enctype="multipart/form-data">
+            <form action="/produto/salvar/" method="POST" enctype="multipart/form-data">
                 
                 <!-- Categoria -->
                 <div class="mb-3">
                     <label for="id_categoria" class="form-label">Categoria</label>
-                    <select class="form-select" id="id_categoria" name="id_categoria" required>
+                    <select class="form-select" id="id_categoria" name="txt_categoria" required>
                         <option value="" selected disabled>Selecione a categoria</option>
-                        <option value="1">Eletrônicos</option>
-                        <option value="2">Roupas</option>
-                        <option value="3">Alimentos</option>
+                        <?php foreach ($data['categorias'] as $categoria): ?>
+                        <option value="<?=$categoria['id']?>">
+                            <?=$categoria['nome']?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
 
                 <!-- Nome -->
                 <div class="mb-3">
                     <label for="nome" class="form-label">Nome do Produto</label>
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o nome do produto" required>
+                    <input type="text" class="form-control" id="nome" name="txt_nome" placeholder="Digite o nome do produto" required>
                 </div>
 
                 <!-- Preço -->
                 <div class="mb-3">
                     <label for="preco" class="form-label">Preço (R$)</label>
-                    <input type="number" step="0.01" class="form-control" id="preco" name="preco" placeholder="0.00" required>
+                    <input type="number" step="0.01" class="form-control" id="txt_preco" name="preco" placeholder="0.00" required>
                 </div>
 
                 <!-- Imagem -->
                 <div class="mb-3">
                     <label for="imagem" class="form-label">Imagem do Produto</label>
-                    <input type="file" class="form-control" id="imagem" name="imagem" accept="image/*" required>
+                    <input type="text" class="form-control" id="imagem" name="txt_imagem" accept="image/*" required>
                 </div>
 
                 <!-- Quantidade -->
                 <div class="mb-3">
                     <label for="quantidade" class="form-label">Quantidade</label>
-                    <input type="number" class="form-control" id="quantidade" name="quantidade" min="1" required>
+                    <input type="number" class="form-control" id="quantidade" name="txt_quantidade" min="1" required>
                 </div>
 
                 <!-- Botões -->

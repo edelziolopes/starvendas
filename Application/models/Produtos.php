@@ -4,14 +4,22 @@ namespace Application\models;
 
 use Application\core\Database;
 use PDO;
-class Categorias
+class Produtos
 {
-  public static function salvar($nome)
+  public static function salvar($categoria, $nome, $preco, $imagem, $quantidade)
   {
     $conn = new Database();
     $result = $conn->executeQuery(
-        'INSERT INTO tb_categorias (nome) VALUES (:NOME)',
-        array(':NOME' => $nome)
+        'INSERT INTO tb_produtos 
+        (id_categoria, nome, preco, imagem, quantidade) 
+        VALUES (:CATEGORIA, :NOME, :PRECO, :IMAGEM, :QUANTIDADE)',
+        array(
+          ':CATEGORIA' => $categoria,
+          ':NOME' => $nome,
+          ':PRECO' => $preco,
+          ':IMAGEM' => $imagem,
+          ':QUANTIDADE' => $quantidade
+          )                                                           
     );
     return $result->rowCount();
   }
