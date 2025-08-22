@@ -35,8 +35,14 @@ class Produtos
   public static function listarTudo()
   {
       $conn = new Database();
-      $result = $conn->executeQuery('
-      SELECT * FROM tb_produtos');
+      $result = $conn->executeQuery('SELECT
+      p.id, p.nome, p.preco, p.imagem,
+      p.quantidade,
+      c.nome AS categoria
+      FROM tb_produtos p
+      JOIN tb_categorias c
+      ON p.id_categoria = c.id      
+      ');
       return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 

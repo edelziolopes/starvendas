@@ -68,10 +68,10 @@
                 <?php foreach ($data['produtos'] as $data): ?>
                 <tr>
                     <td><?= htmlspecialchars($data['id']) ?></td>
-                    <td><?= htmlspecialchars($data['id_categoria']) ?></td>
+                    <td><?= htmlspecialchars($data['categoria']) ?></td>
                     <td><?= htmlspecialchars($data['nome']) ?></td>
                     <td><?= htmlspecialchars($data['preco']) ?></td>
-                    <td><?= htmlspecialchars($data['imagem']) ?></td>
+                    <td><img src="<?= htmlspecialchars($data['imagem']) ?>" width="300"></td>
                     <td><a href="/produto/excluir/<?=$data['id']?>" class="btn btn-danger">Excluir</a></td>
                 </tr>
                 <?php endforeach; ?>
