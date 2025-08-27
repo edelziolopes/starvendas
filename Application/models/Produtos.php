@@ -6,19 +6,20 @@ use Application\core\Database;
 use PDO;
 class Produtos
 {
-  public static function salvar($categoria, $nome, $preco, $imagem, $quantidade)
+  public static function salvar($categoria, $nome, $preco, $imagem, $quantidade, $descricao)
   {
     $conn = new Database();
     $result = $conn->executeQuery(
         'INSERT INTO tb_produtos 
-        (id_categoria, nome, preco, imagem, quantidade) 
-        VALUES (:CATEGORIA, :NOME, :PRECO, :IMAGEM, :QUANTIDADE)',
+        (id_categoria, nome, preco, imagem, quantidade, descricao) 
+        VALUES (:CATEGORIA, :NOME, :PRECO, :IMAGEM, :QUANTIDADE, :DESCRICAO)',
         array(
           ':CATEGORIA' => $categoria,
           ':NOME' => $nome,
           ':PRECO' => $preco,
           ':IMAGEM' => $imagem,
-          ':QUANTIDADE' => $quantidade
+          ':QUANTIDADE' => $quantidade,
+          ':DESCRICAO' => $descricao
           )                                                           
     );
     return $result->rowCount();
@@ -37,7 +38,7 @@ class Produtos
       $conn = new Database();
       $result = $conn->executeQuery('SELECT
       p.id, p.nome, p.preco, p.imagem,
-      p.quantidade,
+      p.quantidade, p.descricao,
       c.nome AS categoria
       FROM tb_produtos p
       JOIN tb_categorias c

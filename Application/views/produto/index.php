@@ -23,6 +23,11 @@
                     <label for="nome" class="form-label">Nome do Produto</label>
                     <input type="text" class="form-control" id="nome" name="txt_nome" placeholder="Digite o nome do produto" required>
                 </div>
+                <!-- Descrição -->
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Descrição</label>
+                    <input type="text" class="form-control" id="nome" name="txt_descricao" placeholder="Digite a descricao" required>
+                </div>
 
                 <!-- Preço -->
                 <div class="mb-3">
@@ -59,6 +64,7 @@
                 <th>ID</th>
                 <th>Categoria</th>
                 <th>Nome</th>
+                <th>Descrição</th>
                 <th>Preço</th>
                 <th>Imagem</th>
                 <th>Ação</th>
@@ -70,6 +76,7 @@
                     <td><?= htmlspecialchars($data['id']) ?></td>
                     <td><?= htmlspecialchars($data['categoria']) ?></td>
                     <td><?= htmlspecialchars($data['nome']) ?></td>
+                    <td><?= htmlspecialchars($data['descricao']) ?></td>
                     <td><?= htmlspecialchars($data['preco']) ?></td>
                     <td><img src="<?= htmlspecialchars($data['imagem']) ?>" width="300"></td>
                     <td><a href="/produto/excluir/<?=$data['id']?>" class="btn btn-danger">Excluir</a></td>

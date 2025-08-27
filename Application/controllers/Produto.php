@@ -26,11 +26,12 @@ class Produto extends Controller
     $preco = $_POST['txt_preco'];
     $imagem = $_POST['txt_imagem'];
     $quantidade = $_POST['txt_quantidade'];
+    $descricao = $_POST['txt_descricao'];
 
     
 
     $Produtos = $this->model('Produtos');
-    $Produtos::salvar($categoria, $nome, $preco, $imagem, $quantidade);
+    $Produtos::salvar($categoria, $nome, $preco, $imagem, $quantidade, $descricao);
     $this->redirect('produto/index');
   }
 
