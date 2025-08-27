@@ -11,6 +11,7 @@
     <li><a href="/categoria">Categoria</a></li>
     <li><a href="/produto">Produto</a></li>
     <li><a href="/usuario">Usuario</a></li>
+    <li><a href="/endereco">Endereço</a></li>
   </ul>
 
   <?php
