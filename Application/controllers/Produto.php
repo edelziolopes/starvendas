@@ -35,4 +35,11 @@ class Produto extends Controller
     $this->redirect('produto/index');
   }
 
+    public function excluir($id)
+  {
+    $Produtos = $this->model('Produtos');
+    $Produtos::excluir($id);
+    $this->redirect('produto/index');
+  }
+
 }

@@ -28,7 +28,7 @@ class Produtos
   {
     $conn = new Database();
     $result = $conn->executeQuery(
-        'DELETE FROM tb_categorias WHERE id=:ID',
+        'DELETE FROM tb_produtos WHERE id=:ID',
         array(':ID' => $id)
     );
     return $result->rowCount();

@@ -4,20 +4,19 @@ namespace Application\models;
 
 use Application\core\Database;
 use PDO;
-class Usuarios
+class Carrinhos
 {
-  public static function salvar($nome, $email, $senha, $foto)
+  public static function salvar($usuario, $endereco)
   {
     $conn = new Database();
     $result = $conn->executeQuery(
-        'INSERT INTO tb_usuarios (nome, email, senha, foto) 
-         VALUES (:NOME, :EMAIL, :SENHA, :FOTO)',
+        'INSERT INTO tb_carrinhos 
+        (id_usuario, id_endereco) 
+        VALUES (:USUARIO, :ENDERECO)',
         array(
-          ':NOME' => $nome,
-          ':EMAIL' => $email,
-          ':SENHA' => $senha,
-          ':FOTO' => $foto
-          )
+          ':USUARIO' => $usuario,
+          ':ENDERECO' => $endereco,
+          )                                                           
     );
     return $result->rowCount();
   }
@@ -25,7 +24,7 @@ class Usuarios
   {
     $conn = new Database();
     $result = $conn->executeQuery(
-        'DELETE FROM tb_usuarios WHERE id=:ID',
+        'DELETE FROM tb_carrinhos WHERE id=:ID',
         array(':ID' => $id)
     );
     return $result->rowCount();
@@ -33,8 +32,10 @@ class Usuarios
   public static function listarTudo()
   {
       $conn = new Database();
-      $result = $conn->executeQuery('
-      SELECT * FROM tb_usuarios');
+      $result = $conn->executeQuery('SELECT
+      *
+      FROM tb_carrinhos      
+      ');
       return $result->fetchAll(PDO::FETCH_ASSOC);
   }
 

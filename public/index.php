@@ -12,6 +12,7 @@
     <li><a href="/produto">Produto</a></li>
     <li><a href="/usuario">Usuario</a></li>
     <li><a href="/endereco">Endereço</a></li>
+    <li><a href="/carrinho">Carrinho</a></li>
   </ul>
 
   <?php
