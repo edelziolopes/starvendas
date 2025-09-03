@@ -12,9 +12,17 @@ class Categoria extends Controller
   }
   public function salvar()
   {
-    $nome = $_POST['nome'];
+    $nome = $_POST['txt_nome'];
     $Categorias = $this->model('Categorias');
     $Categorias::salvar($nome);
+    $this->redirect('categoria/index');
+  }
+  public function editar()
+  {
+    $id = $_POST['txt_id'];
+    $nome = $_POST['txt_nome'];
+    $Categorias = $this->model('Categorias');
+    $Categorias::editar($id, $nome);
     $this->redirect('categoria/index');
   }
   public function excluir($id)

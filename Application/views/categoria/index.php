@@ -1,48 +1,105 @@
 <div class="container my-5">
-    <div class="card shadow">
-        <div class="card-header bg-primary text-white">
-            <h4 class="mb-0">Cadastro de Categoria</h4>
-        </div>
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="card shadow rounded-4">
         <div class="card-body">
+          <h2 class="card-title mb-4 text-center">Cadastro de Categorias</h2>
             <form action="/categoria/salvar" method="POST">
-                
-                <!-- Nome da Categoria -->
-                <div class="mb-3">
-                    <label for="nome" class="form-label">Nome da Categoria</label>
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o nome da categoria" required>
-                </div>
-
-                <!-- Botões -->
-                <div class="d-flex justify-content-end">
-                    <button type="reset" class="btn btn-secondary me-2">Limpar</button>
-                    <button type="submit" class="btn btn-success">Cadastrar</button>
-                </div>
-                
+            <div class="row align-items-center mb-3">
+              <div class="col-auto">
+              <label for="categoria" class="col-form-label mb-0">
+                <i class="fas fa-tag"></i> Nome
+              </label>
+              </div>
+              <div class="col">
+              <input type="text" class="form-control" id="categoria" name="txt_nome" required>
+              </div>
+            </div>
+            <div class="d-flex justify-content-end gap-2">
+              <a href="/categoria" class="btn btn-secondary">
+              Cancelar
+              </a>
+              <button type="submit" class="btn btn-primary">
+              <i class="fas fa-save"></i> Salvar
+              </button>
+            </div>
             </form>
+          </div>
+          </div>
+        </div>
         </div>
 
-
-        <h4 class="mt-4">Listar Categorias</h4>
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped mt-2">
-            <thead class="table-primary">
-                <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Ação</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($data['categorias'] as $categoria): ?>
-                <tr>
-                    <td><?= htmlspecialchars($categoria['id']) ?></td>
-                    <td><?= htmlspecialchars($categoria['nome']) ?></td>
-                    <td><a href="/categoria/excluir/<?=$categoria['id']?>" class="btn btn-danger">Excluir</a></td>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
+    <div class="row justify-content-center mt-5">
+    <div class="col-12">
+      <div class="card shadow rounded-4">
+        <div class="card-body">
+          <h3 class="card-title mb-4">Lista de Categorias</h3>
+          <div class="table-responsive">
+            <table class="table align-middle table-striped table-hover">
+              <thead>
+              <tr>
+                <th scope="col"><i class="fas fa-id-badge"></i> ID</th>
+                <th scope="col"><i class="fas fa-tag"></i> Nome</th>
+                <th scope="col"><i class="fas fa-cog"></i> Ações</th>
+              </tr>
+              </thead>
+              <tbody>
+              <?php foreach ($data['categorias'] as $dados): ?>
+              <tr>
+                <td><?= $dados['id'] ?></td>
+                <td><?= $dados['nome'] ?></td>
+                <td>
+                <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editModal" data-id="<?= $dados['id'] ?>" data-categoria="<?= $dados['nome'] ?>">
+                  <i class="fas fa-edit"></i> Editar
+                </button>
+                <a href="/categoria/excluir/<?= $dados['id'] ?>" class="btn btn-sm btn-danger">
+                  <i class="fas fa-trash-alt"></i> Excluir
+                </a>
+                </td>
+              </tr>
+              <?php endforeach; ?>
+              </tbody>
             </table>
+          </div>
         </div>
-
+      </div>
     </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editModalLabel">Editar Categoria</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/categoria/editar" method="POST">
+            <input type="hidden" id="edit-id" name="txt_id">
+            <div class="mb-3">
+              <label for="edit-categoria" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="edit-categoria" name="txt_nome" required>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+  var editModal = document.getElementById('editModal')
+  editModal.addEventListener('show.bs.modal', function (event) {
+    var button = event.relatedTarget
+    var id = button.getAttribute('data-id')
+    var modalIdInput = editModal.querySelector('#edit-id')
+    var categoria = button.getAttribute('data-categoria')
+    var modalCategoriaInput = editModal.querySelector('#edit-categoria')
+    modalIdInput.value = id
+    modalCategoriaInput.value = categoria
+  })
+</script>

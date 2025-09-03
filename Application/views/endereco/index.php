@@ -1,87 +1,130 @@
 <div class="container my-5">
-    <div class="card shadow">
-        <div class="card-header bg-primary text-white">
-            <h4 class="mb-0">Cadastro de Endereco</h4>
-        </div>
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="card shadow rounded-4">
         <div class="card-body">
-            <form action="/endereco/salvar/" method="POST" enctype="multipart/form-data">
-                
-                <!-- Categoria -->
-                <div class="mb-3">
-                    <label for="id_usuario" class="form-label">Usuário</label>
-                    <select class="form-select" id="id_nome" name="txt_usuario" required>
-                        <option value="" selected disabled>Selecione o usuário</option>
-                        <?php foreach ($data['usuarios'] as $dados): ?>
-                        <option value="<?=$dados['id']?>">
-                            <?=$dados['nome']?></option>
-                        <?php endforeach; ?>
-                    </select>
-                </div>
+          <h2 class="card-title mb-4 text-center">Cadastro de Endereços</h2>
+          <form action="/endereco/salvar" method="POST">
 
-                <!-- Nome -->
-                <div class="mb-3">
-                    <label for="nome" class="form-label">Nome do endereco</label>
-                    <input type="text" class="form-control" id="nome" name="txt_nome" placeholder="Digite o nome do endereco" required>
-                </div>
-                <!-- Descrição -->
-                <div class="mb-3">
-                    <label for="nome" class="form-label">CEP</label>
-                    <input type="text" class="form-control" id="nome" name="txt_cep" placeholder="Digite o CEP" required>
-                </div>
+            <!-- Usuário -->
+            <div class="row align-items-center mb-3">
+              <div class="col-auto">
+                <label for="id_usuario" class="col-form-label mb-0">
+                  <i class="fas fa-user"></i> Usuário
+                </label>
+              </div>
+              <div class="col">
+                <select class="form-select" id="id_usuario" name="txt_usuario" required>
+                  <option value="" selected disabled>Selecione o usuário</option>
+                  <?php foreach ($data['usuarios'] as $dados): ?>
+                    <option value="<?= $dados['id'] ?>"><?= $dados['nome'] ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
+            </div>
 
-                <!-- Preço -->
-                <div class="mb-3">
-                    <label for="preco" class="form-label">Rua</label>
-                    <input type="number" step="0.01" class="form-control" name="txt_rua" placeholder="Digite a rua" required>
-                </div>
+            <!-- Nome do Endereço -->
+            <div class="row align-items-center mb-3">
+              <div class="col-auto">
+                <label for="nome" class="col-form-label mb-0">
+                  <i class="fas fa-map-marker-alt"></i> Nome do Endereço
+                </label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" id="nome" name="txt_nome" placeholder="Digite o nome do endereço" required>
+              </div>
+            </div>
 
-                <!-- Quantidade -->
-                <div class="mb-3">
-                    <label for="quantidade" class="form-label">Numero</label>
-                    <input type="text" class="form-control" id="quantidade" name="txt_numero"required>
-                </div>
+            <!-- CEP -->
+            <div class="row align-items-center mb-3">
+              <div class="col-auto">
+                <label for="cep" class="col-form-label mb-0">
+                  <i class="fas fa-mail-bulk"></i> CEP
+                </label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" id="cep" name="txt_cep" placeholder="Digite o CEP" required>
+              </div>
+            </div>
 
-                <!-- Botões -->
-                <div class="d-flex justify-content-end">
-                    <button type="reset" class="btn btn-secondary me-2">Limpar</button>
-                    <button type="submit" class="btn btn-success">Cadastrar</button>
-                </div>
-                
-            </form>
+            <!-- Rua -->
+            <div class="row align-items-center mb-3">
+              <div class="col-auto">
+                <label for="rua" class="col-form-label mb-0">
+                  <i class="fas fa-road"></i> Rua
+                </label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" id="rua" name="txt_rua" placeholder="Digite a rua" required>
+              </div>
+            </div>
+
+            <!-- Número -->
+            <div class="row align-items-center mb-3">
+              <div class="col-auto">
+                <label for="numero" class="col-form-label mb-0">
+                  <i class="fas fa-home"></i> Número
+                </label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" id="numero" name="txt_numero" placeholder="Digite o número" required>
+              </div>
+            </div>
+
+            <!-- Botões -->
+            <div class="d-flex justify-content-end gap-2">
+              <a href="/endereco" class="btn btn-secondary">Cancelar</a>
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save"></i> Salvar
+              </button>
+            </div>
+
+          </form>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <h4 class="mt-4">Listar Enderecos</h4>
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped mt-2">
-            <thead class="table-primary">
+  <!-- Lista de Endereços -->
+  <div class="row justify-content-center mt-5">
+    <div class="col-12">
+      <div class="card shadow rounded-4">
+        <div class="card-body">
+          <h3 class="card-title mb-4">Lista de Endereços</h3>
+          <div class="table-responsive">
+            <table class="table align-middle table-striped table-hover">
+              <thead>
                 <tr>
-                <th>ID</th>
-                <th>Usuario</th>
-                <th>Nome</th>
-                <th>CEP</th>
-                <th>Rua</th>
-                <th>Numero</th>
-                <th>Ação</th>
+                  <th scope="col"><i class="fas fa-id-badge"></i> ID</th>
+                  <th scope="col"><i class="fas fa-user"></i> Usuário</th>
+                  <th scope="col"><i class="fas fa-map-marker-alt"></i> Nome</th>
+                  <th scope="col"><i class="fas fa-mail-bulk"></i> CEP</th>
+                  <th scope="col"><i class="fas fa-road"></i> Rua</th>
+                  <th scope="col"><i class="fas fa-home"></i> Número</th>
+                  <th scope="col"><i class="fas fa-cog"></i> Ações</th>
                 </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($data['enderecos'] as $data): ?>
+              </thead>
+              <tbody>
+                <?php foreach ($data['enderecos'] as $dados): ?>
                 <tr>
-                    <td><?= htmlspecialchars($data['id']) ?></td>
-                    <td><?= htmlspecialchars($data['id_usuario']) ?></td>
-                    <td><?= htmlspecialchars($data['nome']) ?></td>
-                    <td><?= htmlspecialchars($data['cep']) ?></td>
-                    <td><?= htmlspecialchars($data['rua']) ?></td>
-                    <td><?= htmlspecialchars($data['numero']) ?></td>
-
-                    <td><a href="/endereco/excluir/<?=$data['id']?>" class="btn btn-danger">Excluir</a></td>
+                  <td><?= htmlspecialchars($dados['id']) ?></td>
+                  <td><?= htmlspecialchars($dados['id_usuario']) ?></td>
+                  <td><?= htmlspecialchars($dados['nome']) ?></td>
+                  <td><?= htmlspecialchars($dados['cep']) ?></td>
+                  <td><?= htmlspecialchars($dados['rua']) ?></td>
+                  <td><?= htmlspecialchars($dados['numero']) ?></td>
+                  <td>
+                    <a href="/endereco/excluir/<?= $dados['id'] ?>" class="btn btn-sm btn-danger">
+                      <i class="fas fa-trash-alt"></i> Excluir
+                    </a>
+                  </td>
                 </tr>
                 <?php endforeach; ?>
-            </tbody>
+              </tbody>
             </table>
+          </div>
         </div>
-
-
-
+      </div>
     </div>
+  </div>
 </div>

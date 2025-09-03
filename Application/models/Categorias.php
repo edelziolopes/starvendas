@@ -15,6 +15,20 @@ class Categorias
     );
     return $result->rowCount();
   }
+  public static function editar($id, $nome)
+  {
+    $conn = new Database();
+    $result = $conn->executeQuery(
+        'UPDATE tb_categorias
+        SET nome = :NOME
+        WHERE id = :ID',
+        array(
+          ':NOME' => $nome,
+          ':ID' => $id
+        )
+    );
+    return $result->rowCount();
+  }
   public static function excluir($id)
   {
     $conn = new Database();
