@@ -11,11 +11,12 @@ class Compras
     $conn = new Database();
     $result = $conn->executeQuery(
         'INSERT INTO tb_compras 
-        (id_usuario, id_endereco) 
-        VALUES (:USUARIO, :ENDERECO)',
+        (id_carrinho, id_produto, quantidade) 
+        VALUES (:CARRINHO, :PRODUTO, :QUANTIDADE)',
         array(
-          ':USUARIO' => $usuario,
-          ':ENDERECO' => $endereco,
+          ':CARRINHO' => $carrinho,
+          ':PRODUTO' => $produto,
+          ':QUANTIDADE' => $quantidade
           )                                                           
     );
     return $result->rowCount();
@@ -34,7 +35,7 @@ class Compras
       $conn = new Database();
       $result = $conn->executeQuery('SELECT
       *
-      FROM tb_carrinhos      
+      FROM tb_compras      
       ');
       return $result->fetchAll(PDO::FETCH_ASSOC);
   }
