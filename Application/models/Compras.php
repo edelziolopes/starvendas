@@ -25,7 +25,7 @@ class Compras
   {
     $conn = new Database();
     $result = $conn->executeQuery(
-        'DELETE FROM tb_carrinhos WHERE id=:ID',
+        'DELETE FROM tb_compras WHERE id=:ID',
         array(':ID' => $id)
     );
     return $result->rowCount();

@@ -22,34 +22,56 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link text-white" href="/categoria">
-              <i class="fas fa-list"></i> Categoria
+            <a class="nav-link text-white" href="/home">
+              <i class="fas fa-home"></i> Home
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="/produto">
-              <i class="fas fa-box"></i> Produto
+            <a class="nav-link text-white" href="/usuario/login">
+              <i class="fas fa-sign-in-alt"></i> Login
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="/usuario">
-              <i class="fas fa-user"></i> Usuario
+            <a class="nav-link text-white" href="/usuario/cadastro">
+              <i class="fas fa-user-plus"></i> Cadastro
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="/endereco">
-              <i class="fas fa-map-marker-alt"></i> Endereço
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="admDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-user-shield"></i> ADM
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="/carrinho">
-              <i class="fas fa-shopping-cart"></i> Carrinho
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white" href="/compra">
-              <i class="fas fa-shopping-cart"></i> Compra
-            </a>
+            <ul class="dropdown-menu" aria-labelledby="admDropdown">
+              <li>
+          <a class="dropdown-item" href="/categoria">
+            <i class="fas fa-list"></i> Categoria
+          </a>
+              </li>
+              <li>
+          <a class="dropdown-item" href="/produto">
+            <i class="fas fa-box"></i> Produto
+          </a>
+              </li>
+              <li>
+          <a class="dropdown-item" href="/usuario">
+            <i class="fas fa-users"></i> Usuário
+          </a>
+              </li>
+              <li>
+          <a class="dropdown-item" href="/endereco">
+            <i class="fas fa-map-marker-alt"></i> Endereço
+          </a>
+              </li>
+              <li>
+          <a class="dropdown-item" href="/carrinho">
+            <i class="fas fa-shopping-cart"></i> Carrinho
+          </a>
+              </li>
+              <li>
+          <a class="dropdown-item" href="/compra">
+            <i class="fas fa-credit-card"></i> Compra
+          </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>

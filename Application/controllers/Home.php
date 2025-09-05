@@ -9,7 +9,14 @@ class Home extends Controller
   */
   public function index()
   {
-    $this->view('home/index');
+    $Produtos = $this->model('Produtos');
+    $listarProd = $Produtos::listarTudo();
+
+
+    $this->view('home/index', [
+      'produtos' => $listarProd
+
+    ]);
   }
 
 }

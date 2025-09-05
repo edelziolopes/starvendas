@@ -50,10 +50,9 @@
                 </label>
               </div>
               <div class="col">
-                <input type="text" class="form-control" id="foto" name="txt_foto" required>
+                <input type="file" class="form-control" id="foto" name="txt_foto" required>
               </div>
             </div>
-
             <!-- Botões -->
             <div class="d-flex justify-content-end gap-2">
               <a href="/usuario" class="btn btn-secondary">Cancelar</a>

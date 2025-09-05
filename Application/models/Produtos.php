@@ -46,5 +46,20 @@ class Produtos
       ');
       return $result->fetchAll(PDO::FETCH_ASSOC);
   }
+  public static function detalhes($id)
+  {
+      $conn = new Database();
+      $result = $conn->executeQuery('SELECT
+      p.id, p.nome, p.preco, p.imagem,
+      p.quantidade, p.descricao,
+      c.nome AS categoria
+      FROM tb_produtos p
+      JOIN tb_categorias c
+      ON p.id_categoria = c.id
+      WHERE p.id = :ID',
+      array(':ID' => $id)
+      );
+      return $result->fetch(PDO::FETCH_ASSOC);
+  }
 
 }
