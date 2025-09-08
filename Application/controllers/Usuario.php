@@ -15,23 +15,16 @@ class Usuario extends Controller
     $nome = $_POST['txt_nome'];
     $email = $_POST['txt_email'];
     $senha = $_POST['txt_senha'];
-    $foto = null;
+    $foto = $_FILES['txt_foto'];
 
-    if (isset($_FILES['txt_foto']) && $_FILES['txt_foto']['error'] === UPLOAD_ERR_OK) {
-      $uploadDir = '../public/uploads/foto/';
-      if (!is_dir($uploadDir)) {
-        mkdir($uploadDir, 0777, true);
-      }
-      $fileName = uniqid() . '_' . basename($_FILES['txt_foto']['name']);
-      $filePath = $uploadDir . $fileName;
-      if (move_uploaded_file($_FILES['txt_foto']['tmp_name'], $filePath)) {
-        $foto = $filePath;
-      }
+    $timestamp = date('YmdHis');
+    $retratoName = $timestamp . '.jpg';
+    $uploadPath = '../public/fotos/' . $retratoName;
+    if (move_uploaded_file($foto['tmp_name'], $uploadPath)) {
+      $Usuarios = $this->model('Usuarios');
+      $Usuarios::salvar($nome, $email, $senha, $retratoName);
+      $this->redirect('usuario/index');
     }
-
-    $Usuarios = $this->model('Usuarios');
-    $Usuarios::salvar($nome, $email, $senha, $foto);
-    $this->redirect('usuario/index');
   }
   public function excluir($id)
   {

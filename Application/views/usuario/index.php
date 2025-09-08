@@ -4,7 +4,7 @@
       <div class="card shadow rounded-4">
         <div class="card-body">
           <h2 class="card-title mb-4 text-center">Cadastro de Usuários</h2>
-          <form action="/usuario/salvar" method="POST">
+          <form action="/usuario/salvar" method="POST" enctype="multipart/form-data">
 
             <!-- Nome -->
             <div class="row align-items-center mb-3">
@@ -92,7 +92,7 @@
                   <td><?= htmlspecialchars($dados['nome']) ?></td>
                   <td><?= htmlspecialchars($dados['email']) ?></td>
                   <td><?= htmlspecialchars($dados['senha']) ?></td>
-                  <td><?= htmlspecialchars($dados['foto']) ?></td>
+                <td><img src="../fotos/<?= htmlspecialchars($dados['foto']) ?>" height="100px"></td>
                   <td>
                     <a href="/usuario/excluir/<?= $dados['id'] ?>" class="btn btn-sm btn-danger">
                       <i class="fas fa-trash-alt"></i> Excluir
