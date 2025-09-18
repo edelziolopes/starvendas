@@ -35,7 +35,6 @@
               </div>
             </div>
 
-            <!-- CEP -->
             <div class="row align-items-center mb-3">
               <div class="col-auto">
                 <label for="cep" class="col-form-label mb-0">
@@ -43,7 +42,8 @@
                 </label>
               </div>
               <div class="col">
-                <input type="text" class="form-control" id="cep" name="txt_cep" placeholder="Digite o CEP" required>
+                <input type="text" class="form-control" id="cep" name="txt_cep" 
+                      placeholder="Digite o CEP" required maxlength="9">
               </div>
             </div>
 
@@ -68,6 +68,42 @@
               </div>
               <div class="col">
                 <input type="text" class="form-control" id="numero" name="txt_numero" placeholder="Digite o número" required>
+              </div>
+            </div>
+
+            <!-- Bairro -->
+            <div class="row align-items-center mb-3">
+              <div class="col-auto">
+                <label for="bairro" class="col-form-label mb-0">
+                  <i class="fas fa-map"></i> Bairro
+                </label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" id="bairro" name="txt_bairro">
+              </div>
+            </div>
+
+            <!-- Cidade -->
+            <div class="row align-items-center mb-3">
+              <div class="col-auto">
+                <label for="cidade" class="col-form-label mb-0">
+                  <i class="fas fa-city"></i> Cidade
+                </label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" id="cidade" name="txt_cidade">
+              </div>
+            </div>
+
+            <!-- Estado -->
+            <div class="row align-items-center mb-3">
+              <div class="col-auto">
+                <label for="estado" class="col-form-label mb-0">
+                  <i class="fas fa-flag"></i> Estado
+                </label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" id="estado" name="txt_estado">
               </div>
             </div>
 
@@ -108,8 +144,8 @@
                 <?php foreach ($data['enderecos'] as $dados): ?>
                 <tr>
                   <td><?= htmlspecialchars($dados['id']) ?></td>
-                  <td><?= htmlspecialchars($dados['id_usuario']) ?></td>
-                  <td><?= htmlspecialchars($dados['nome']) ?></td>
+                  <td><?= htmlspecialchars($dados['nome_usuario']) ?></td>
+                  <td><?= htmlspecialchars($dados['nome_endereco']) ?></td>
                   <td><?= htmlspecialchars($dados['cep']) ?></td>
                   <td><?= htmlspecialchars($dados['rua']) ?></td>
                   <td><?= htmlspecialchars($dados['numero']) ?></td>
@@ -128,3 +164,27 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.getElementById('cep').addEventListener('blur', function () {
+    let cep = this.value.replace(/\D/g, ''); // remove caracteres não numéricos
+
+    if (cep.length === 8) {
+      fetch(`https://viacep.com.br/ws/${cep}/json/`)
+        .then(response => response.json())
+        .then(data => {
+          if (!data.erro) {
+            document.getElementById('rua').value = data.logradouro;
+            document.getElementById('bairro').value = data.bairro;
+            document.getElementById('cidade').value = data.localidade;
+            document.getElementById('estado').value = data.uf;
+          } else {
+            alert('CEP não encontrado!');
+          }
+        })
+        .catch(() => {
+          alert('Erro ao buscar o CEP. Tente novamente.');
+        });
+    }
+  });
+</script>

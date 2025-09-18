@@ -33,8 +33,19 @@ class Carrinhos
   {
       $conn = new Database();
       $result = $conn->executeQuery('SELECT
-      *
-      FROM tb_carrinhos      
+                                      c.*,
+                                      u.nome AS nome_usuario,
+                                      e.nome AS nome_endereco
+                                    FROM
+                                      tb_carrinhos AS c
+                                    JOIN
+                                      tb_usuarios AS u
+                                    ON
+                                      c.id_usuario = u.id
+                                    JOIN
+                                      tb_enderecos AS e
+                                    ON
+                                      c.id_endereco = e.id;
       ');
       return $result->fetchAll(PDO::FETCH_ASSOC);
   }

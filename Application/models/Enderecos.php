@@ -36,8 +36,18 @@ class Enderecos
   {
       $conn = new Database();
       $result = $conn->executeQuery('SELECT
-      *
-      FROM tb_enderecos      
+                                      u.nome AS nome_usuario,
+                                      e.nome AS nome_endereco,
+                                      e.id,
+                                      e.cep,
+                                      e.rua,
+                                      e.numero
+                                    FROM
+                                      tb_enderecos AS e
+                                    JOIN
+                                      tb_usuarios AS u
+                                    ON
+                                      e.id_usuario = u.id;
       ');
       return $result->fetchAll(PDO::FETCH_ASSOC);
   }

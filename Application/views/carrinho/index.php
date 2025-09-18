@@ -34,7 +34,7 @@
                 <select class="form-select" id="id_endereco" name="txt_endereco" required>
                   <option value="" selected disabled>Selecione o endereço</option>
                   <?php foreach ($data['enderecos'] as $dados): ?>
-                    <option value="<?= $dados['id'] ?>"><?= $dados['nome'] ?></option>
+                    <option value="<?= $dados['id'] ?>"><?= $dados['nome_endereco'] ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -74,8 +74,8 @@
                 <?php foreach ($data['carrinhos'] as $dados): ?>
                 <tr>
                   <td><?= htmlspecialchars($dados['id']) ?></td>
-                  <td><?= htmlspecialchars($dados['id_usuario']) ?></td>
-                  <td><?= htmlspecialchars($dados['id_endereco']) ?></td>
+                  <td><?= htmlspecialchars($dados['nome_usuario']) ?></td>
+                  <td><?= htmlspecialchars($dados['nome_endereco']) ?></td>
                   <td>
                     <a href="/carrinho/excluir/<?= $dados['id'] ?>" class="btn btn-sm btn-danger">
                       <i class="fas fa-trash-alt"></i> Excluir

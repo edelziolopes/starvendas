@@ -3,7 +3,7 @@
     <?php foreach ($data['produtos'] as $produto): ?>
       <div class="col">
         <div class="card h-100 shadow-sm">
-          <img src="<?= htmlspecialchars($produto['imagem']) ?>" class="card-img-top" alt="<?= htmlspecialchars($produto['nome']) ?>" style="height: 180px; object-fit: cover;">
+          <img src="../uploads/produto/<?= htmlspecialchars($produto['imagem']) ?>" class="card-img-top" alt="<?= htmlspecialchars($produto['nome']) ?>" style="height: 180px; object-fit: cover;">
           <div class="card-body">
             <h6 class="card-subtitle mb-2 text-muted"><?= htmlspecialchars($produto['categoria']) ?></h6>
             <h5 class="card-title"><?= htmlspecialchars($produto['nome']) ?></h5>

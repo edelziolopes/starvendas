@@ -2,7 +2,7 @@
     <?php if (!empty($data['produto'])): ?>
         <div class="row">
             <div class="col-md-5">
-                <img src="<?= htmlspecialchars($data['produto']['imagem']) ?>" class="img-fluid rounded shadow-sm" alt="<?= htmlspecialchars($data['produto']['nome']) ?>" style="height: 350px; object-fit: cover;">
+                <img src="/uploads/produto/<?= htmlspecialchars($data['produto']['imagem']) ?>" class="img-fluid rounded shadow-sm" alt="<?= htmlspecialchars($data['produto']['nome']) ?>" style="height: 350px; object-fit: cover;">
             </div>
             <div class="col-md-7">
                 <h6 class="text-muted"><?= htmlspecialchars($data['produto']['categoria']) ?></h6>

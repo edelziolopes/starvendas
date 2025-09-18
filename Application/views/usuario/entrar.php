@@ -3,7 +3,8 @@
   <div class="card shadow" style="width: 22rem;">
     <div class="card-body">
       <h5 class="card-title mb-4 text-center">Login</h5>
-      <form action="/usuario/login" method="post">
+      <form action="/usuario/entrar" method="post">
+        <?php if (isset($data['erro'])): ?><div class="alert alert-danger"><?= htmlspecialchars($data['erro']) ?></div><?php endif; ?>
         <div class="mb-3">
             <label for="username" class="form-label">E-mail:</label>
           <input type="text" id="username" name="txt_email" class="form-control" required>

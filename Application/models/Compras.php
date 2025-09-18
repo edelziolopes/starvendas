@@ -34,8 +34,15 @@ class Compras
   {
       $conn = new Database();
       $result = $conn->executeQuery('SELECT
-      *
-      FROM tb_compras      
+                                      c.*,
+                                      p.nome AS nome_produto,
+                                      p.imagem AS imagem_produto
+                                    FROM
+                                      tb_compras AS c
+                                    JOIN
+                                      tb_produtos AS p
+                                    ON
+                                      c.id_produto = p.id;
       ');
       return $result->fetchAll(PDO::FETCH_ASSOC);
   }
